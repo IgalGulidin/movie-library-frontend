@@ -1,6 +1,6 @@
-import Navbar from "@/components/ui/layout/Navbar";
-import Footer from "@/components/ui/layout/Footer";
-import MovieCard from "@/components/ui/movies/MovieCard";
+import Navbar from "@/components/layout/Navbar";
+import Footer from "@/components/layout/Footer";
+import MovieCard from "@/components/movies/MovieCard";
 
 function App() {
   return (
