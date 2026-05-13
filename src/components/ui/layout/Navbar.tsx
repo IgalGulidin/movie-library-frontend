@@ -1,0 +1,22 @@
+function Navbar() {
+    return (
+        <nav className="w-full bg-backgroud border-b border-border px-6 py-4 flex items-center justify-between">
+            <div className="text-x1 font-bold text-foreground">
+                Movie Library
+            </div>
+            <div className="flex gap-4">
+                <a href="/" className="text-muted-foreground hover:text-foreground transition-colors">
+                    Home
+                </a>
+                <a href="/popular" className="text-muted-foreground hover:text-foreground transition-colors">
+                    Popular
+                </a>
+                <a href="/top-rated" className="text-muted-foreground hover:text-foreground transitions-colors">
+                    Top Rated
+                </a>
+            </div>
+        </nav>
+    )
+}
+
+export default Navbar;

@@ -1,10 +1,12 @@
-import { Button } from "@/components/ui/button"
+import Navbar from "./components/ui/layout/Navbar"
 
 function App() {
   return (
     <div>
-      <h1>Movie Library</h1>
-      <Button>Click me</Button>
+      <Navbar />
+      <main className="px-6 py-8">
+        <h1>Movie Library</h1>
+      </main>
     </div>
   )
 }
