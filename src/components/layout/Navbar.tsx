@@ -4,7 +4,7 @@ function Navbar() {
   return (
     <nav className="w-full bg-background border-b border-border px-6 py-4 flex items-center justify-between">
       <div className="flex w-[60%] mx-auto justify-between items-center">
-        <div className="text-xl font-bold text-foreground">Movie Library</div>
+        <div className="text-xl font-bold text-foreground">🎬 Movie Library</div>
         <SearchBar />
         <div className="flex gap-4">
           <a

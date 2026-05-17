@@ -11,7 +11,9 @@ function MovieCard({
   voteAverage,
   releaseDate,
 }: MovieCardProps) {
-  const imageUrl = `https://image.tmdb.org/t/p/w500${posterPath}`
+  const imageUrl = posterPath
+    ? `https://image.tmdb.org/t/p/w500${posterPath}`
+    : "https://via.placeholder.com/500x750?text=No+Poster";
   const year = releaseDate.split("-")[0];
   const rating = voteAverage.toFixed(1);
 
@@ -28,7 +30,7 @@ function MovieCard({
         </h3>
         <div className="flex justify-between text-xs text-muted-foreground">
           <span>{year}</span>
-          <span>{rating}</span>
+          <span>⭐ {rating}</span>
         </div>
       </div>
     </div>
