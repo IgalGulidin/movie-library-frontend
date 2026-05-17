@@ -28,9 +28,9 @@ function App() {
       <main className="flex-1 px-6 py-8">
         <div className="w-[60%] mx-auto">
           <MovieSection title="Recently Released" movies={recentlyReleased} />
-          <MovieSection title="In Theaters" movies={inTheaters} />
           <MovieSection title="Popular" movies={popular} />
           <MovieSection title="Top Rated" movies={topRated} />
+          <MovieSection title="In Theaters" movies={inTheaters} />
         </div>
       </main>
       <Footer />
