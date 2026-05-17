@@ -26,9 +26,11 @@ function App() {
     <div className="min-h-screen flex flex-col">
       <Navbar />
       <main className="flex-1 px-6 py-8">
-        <MovieSection title="Now Playing" movies={nowPlaying} />
-        <MovieSection title="Popular" movies={popular} />
-        <MovieSection title="Top Rated" movies={topRated} />
+        <div className="w-[60%] mx-auto">
+          <MovieSection title="Now Playing" movies={nowPlaying} />
+          <MovieSection title="Popular" movies={popular} />
+          <MovieSection title="Top Rated" movies={topRated} />
+        </div>
       </main>
       <Footer />
     </div>
@@ -36,3 +38,4 @@ function App() {
 }
 
 export default App;
+  
