@@ -1,20 +1,13 @@
 import MovieCard from "./MovieCard";
 import { ScrollArea, ScrollBar } from "@/components/ui/scroll-area";
-
-interface Movie {
-  id: number;
-  title: string;
-  poster_path: string;
-  vote_average: number;
-  release_date: string;
-}
+import type { Movie } from "@/types/movie.types"
 
 interface MovieSectionProps {
   title: string;
   movies: Movie[];
 }
 
-function MovieSection({ title, movies }: MovieSectionProps) {
+function MovieSection({ title, movies = [] }: MovieSectionProps) {
   return (
     <section className="mb-12">
       <h2 className="text-2x1 font-bold text-foreground mb-6">{title}</h2>

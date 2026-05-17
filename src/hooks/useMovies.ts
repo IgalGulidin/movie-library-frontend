@@ -1,17 +1,11 @@
 import { useState, useEffect } from "react";
-
-interface Movie {
-  id: number;
-  title: string;
-  poster_path: string;
-  vote_average: number;
-  release_date: string;
-}
+import type { Movie, TMDBResponse } from "@/types/movie.types";
 
 interface MoviesState {
   popular: Movie[];
-  nowPlaying: Movie[];
+  inTheaters: Movie[];
   topRated: Movie[];
+  recentlyReleased: Movie[];
   loading: boolean;
   error: string | null;
 }
@@ -19,8 +13,9 @@ interface MoviesState {
 function useMovies() {
   const [state, setState] = useState<MoviesState>({
     popular: [],
-    nowPlaying: [],
+    inTheaters: [],
     topRated: [],
+    recentlyReleased: [],
     loading: true,
     error: null,
   });
@@ -28,22 +23,25 @@ function useMovies() {
   useEffect(() => {
     const fetchMovies = async () => {
       try {
-        const [popularRes, nowPlayingRes, topRatedRes] = await Promise.all([
+        const [popularRes, inTheatersRes, topRatedRes, recentlyReleasedRes] = await Promise.all([
           fetch("http://localhost:3000/movies/popular"),
-          fetch("http://localhost:3000/movies/now-playing"),
+          fetch("http://localhost:3000/movies/in-theaters"),
           fetch("http://localhost:3000/movies/top-rated"),
+          fetch("http://localhost:3000/movies/recently-released"),
         ]);
 
-        const [popular, nowPlaying, topRated] = await Promise.all([
-          popularRes.json(),
-          nowPlayingRes.json(),
-          topRatedRes.json(),
+        const [popular, inTheaters, topRated, recentlyReleased] = await Promise.all([
+          popularRes.json() as Promise<TMDBResponse>,
+          inTheatersRes.json() as Promise<TMDBResponse>,
+          topRatedRes.json() as Promise<TMDBResponse>,
+          recentlyReleasedRes.json() as Promise<TMDBResponse>,
         ]);
 
         setState({
           popular: popular.results,
-          nowPlaying: nowPlaying.results,
+          inTheaters: inTheaters.results,
           topRated: topRated.results,
+          recentlyReleased: recentlyReleased.results,
           loading: false,
           error: null,
         });

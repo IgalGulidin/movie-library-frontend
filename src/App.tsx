@@ -4,7 +4,7 @@ import useMovies from "./hooks/useMovies";
 import MovieSection from "./components/movies/MovieSection";
 
 function App() {
-  const { popular, nowPlaying, topRated, loading, error } = useMovies();
+  const { recentlyReleased, popular, inTheaters, topRated, loading, error } = useMovies();
 
   if (loading) {
     return (
@@ -27,7 +27,8 @@ function App() {
       <Navbar />
       <main className="flex-1 px-6 py-8">
         <div className="w-[60%] mx-auto">
-          <MovieSection title="Now Playing" movies={nowPlaying} />
+          <MovieSection title="Recently Released" movies={recentlyReleased} />
+          <MovieSection title="In Theaters" movies={inTheaters} />
           <MovieSection title="Popular" movies={popular} />
           <MovieSection title="Top Rated" movies={topRated} />
         </div>
@@ -38,4 +39,3 @@ function App() {
 }
 
 export default App;
-  
