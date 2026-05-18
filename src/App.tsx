@@ -1,41 +1,31 @@
+import { BrowserRouter, Routes, Route } from "react-router-dom"
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
-import useMovies from "./hooks/useMovies";
-import MovieSection from "./components/movies/MovieSection";
+import Home from "@/pages/Home"
+import RecentlyReleased from "./pages/RecentlyReleased";
+import Popular from "@/pages/Popular"
+import TopRated from "./pages/TopRated";
+import InTheaters from "./pages/InTheaters";
+
 
 function App() {
-  const { recentlyReleased, popular, inTheaters, topRated, loading, error } = useMovies();
-
-  if (loading) {
-    return (
-      <div className="min-h-screen flex items-center justify-center">
-        <p className="text-muted-foreground">Loading movies...</p>
-      </div>
-    );
-  }
-
-  if (error) {
-    return (
-      <div className="min-h-screen flex items-center justify-center">
-        <p className="text-destructive">{error}</p>
-      </div>
-    );
-  }
-
   return (
-    <div className="min-h-screen flex flex-col">
+    <BrowserRouter>
+      <div className="min-h-screen flex flex-col">
       <Navbar />
-      <main className="flex-1 px-6 py-8">
-        <div className="w-[60%] mx-auto">
-          <MovieSection title="Recently Released" movies={recentlyReleased} />
-          <MovieSection title="Popular" movies={popular} />
-          <MovieSection title="Top Rated" movies={topRated} />
-          <MovieSection title="In Theaters" movies={inTheaters} />
-        </div>
+      <main className="flex-1">
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/recently-released" element={<RecentlyReleased />} />
+          <Route path="/popular" element={<Popular />} />
+          <Route path="/top-rated" element={<TopRated />} />
+          <Route path="/in-theaters" element={<InTheaters />} />
+        </Routes>
       </main>
       <Footer />
-    </div>
-  );
+      </div>
+    </BrowserRouter>
+  )
 }
 
 export default App;
