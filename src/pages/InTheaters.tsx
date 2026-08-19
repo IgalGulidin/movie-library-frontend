@@ -22,7 +22,7 @@ function InTheaters() {
 
     return (
         <div className="w-[60%] mx-auto py-8">
-            <MovieSection title="In Theaters" movies={inTheaters} />
+            <MovieSection title="In Theaters" movies={inTheaters} path="in-theaters" />
         </div>
     )
 }

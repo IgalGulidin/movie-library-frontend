@@ -1,40 +1,44 @@
-import { useState } from "react";
-import type { Movie } from "@/types/movie.types";
+import { useState } from "react"
+import { useDebouncedCallback } from "use-debounce"
+import type { Movie } from "@/types/movie.types"
 
 function SearchBar() {
-  const [query, setQuery] = useState("");
-  const [results, setResults] = useState<Movie[]>([]);
-  const [isOpen, setIsOpen] = useState(false);
-  const [loading, setLoading] = useState(false);
+  const [query, setQuery] = useState("")
+  const [results, setResults] = useState<Movie[]>([])
+  const [isOpen, setIsOpen] = useState(false)
+  const [loading, setLoading] = useState(false)
 
-  const handleSearch = async (value: string) => {
-    setQuery(value);
-
+  const search = useDebouncedCallback(async (value: string) => {
     if (value.trim().length < 2) {
-      setResults([]);
-      setIsOpen(false);
-      return;
+      setResults([])
+      setIsOpen(false)
+      return
     }
 
-    setLoading(true);
+    setLoading(true)
     try {
       const response = await fetch(
-        `http://localhost:3000/movies/search?q=${encodeURIComponent(value)}`,
-      );
-      const data = await response.json();
-      setResults(data.results.slice(0, 5));
-      setIsOpen(true);
+        `http://localhost:3000/movies/search?q=${encodeURIComponent(value)}`
+      )
+      const data = await response.json()
+      setResults(data.results.slice(0, 5))
+      setIsOpen(true)
     } catch {
-      setResults([]);
+      setResults([])
     } finally {
-      setLoading(false);
+      setLoading(false)
     }
-  };
+  }, 400)
+
+  const handleSearch = (value: string) => {
+    setQuery(value)
+    search(value)
+  }
 
   return (
     <div
-      className="relative w-88"
-      onBlur={() => setTimeout(() => setIsOpen(false), 0)}
+      className="relative w-64"
+      onBlur={() => setTimeout(() => setIsOpen(false), 150)}
     >
       <input
         type="text"
@@ -49,7 +53,7 @@ function SearchBar() {
         </div>
       )}
       {isOpen && results.length > 0 && (
-        <div className="absolute top-10 left-0 w-full bg-popover border border-border overflow-hidden z-50">
+        <div className="absolute top-10 left-0 w-full bg-popover border border-border rounded-md overflow-hidden z-50">
           {results.map((movie) => (
             <div
               key={movie.id}
@@ -73,12 +77,12 @@ function SearchBar() {
         </div>
       )}
       {isOpen && results.length === 0 && !loading && (
-        <div className="absolute top-10 left-0 w-full bg-popover border border-border rounder-md p-3 text-sm text-mutd-foreground">
+        <div className="absolute top-10 left-0 w-full bg-popover border border-border rounded-md p-3 text-sm text-muted-foreground">
           No movies found
         </div>
       )}
     </div>
-  );
+  )
 }
 
-export default SearchBar;
+export default SearchBar

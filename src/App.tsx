@@ -6,6 +6,7 @@ import RecentlyReleased from "./pages/RecentlyReleased";
 import Popular from "@/pages/Popular"
 import TopRated from "./pages/TopRated";
 import InTheaters from "./pages/InTheaters";
+import MovieDetail from "@/pages/MovieDetail"
 
 
 function App() {
@@ -20,6 +21,7 @@ function App() {
           <Route path="/popular" element={<Popular />} />
           <Route path="/top-rated" element={<TopRated />} />
           <Route path="/in-theaters" element={<InTheaters />} />
+          <Route path="/movie/:id" element={<MovieDetail />} />
         </Routes>
       </main>
       <Footer />

@@ -1,5 +1,6 @@
-import MovieSection from "@/components/movies/MovieSection"
-import useMovies from "@/hooks/useMovies"
+import HeroBanner from "@/components/layout/HeroBanner";
+import MovieSection from "@/components/movies/MovieSection";
+import useMovies from "@/hooks/useMovies";
 
 function Home() {
     const { popular, inTheaters, topRated, recentlyReleased, loading, error } = useMovies()
@@ -21,11 +22,14 @@ function Home() {
     }
 
     return (
-        <div className="w-[60%] mx-auto py-8">
-            <MovieSection title="Recently Released" movies={recentlyReleased} path="/recently-released" />
-            <MovieSection title="Popular" movies={popular} path="/popular" />
-            <MovieSection title="Top Rated" movies={topRated} path="top-rated" />
-            <MovieSection title="In Theaters" movies={inTheaters} path="in-theaters" />
+        <div>
+            <HeroBanner movies={popular} />
+            <div className="w-[85%] mx-auto">
+                <MovieSection title="Recently Released" movies={recentlyReleased} path="/recently-released" />
+                <MovieSection title="In Theaters" movies={inTheaters} path="/in-theaters" />
+                <MovieSection title="Popular" movies={popular} path="/popular" />
+                <MovieSection title="Top Rated" movies={topRated} path="/top-rated" />
+            </div>
         </div>
     )
 }

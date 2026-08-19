@@ -22,7 +22,7 @@ function RecentlyReleased() {
 
     return (
         <div className="w-[60%] mx-auto py-8">
-            <MovieSection title="Recently Released" movies={recentlyReleased} />
+            <MovieSection title="Recently Released" movies={recentlyReleased} path="recently-released"/>
         </div>
     )
 }

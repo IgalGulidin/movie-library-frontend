@@ -22,7 +22,7 @@ function Popular() {
 
     return (
         <div className="w-[60%] mx-auto py-8">
-            <MovieSection title="Popular" movies={popular} />
+            <MovieSection title="Popular" movies={popular} path="popular" />
         </div>
     )
 }

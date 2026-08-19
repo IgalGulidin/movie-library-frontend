@@ -22,7 +22,7 @@ function TopRated() {
 
     return (
         <div className="w-[60%] mx-auto py-8">
-            <MovieSection title="Top Rated" movies={topRated} />
+            <MovieSection title="Top Rated" movies={topRated} path="top-rated" />
         </div>
     )
 }
