@@ -20,6 +20,8 @@ function MovieSection({ title, movies = [], path }: MovieSectionProps) {
           {movies.map((movie) => (
             <div key={movie.id} className="flex-none w-36">
               <MovieCard
+                key={movie.id}
+                id={movie.id}
                 title={movie.title}
                 posterPath={movie.poster_path}
                 voteAverage={movie.vote_average}

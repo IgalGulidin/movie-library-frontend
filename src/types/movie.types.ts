@@ -29,3 +29,23 @@ export interface MovieDetailType {
     tagline: string
     status: string
 }
+
+export interface CastMember {
+    id: number
+    name: string
+    character: string
+    profile_path: string | null
+}
+
+export interface Video {
+    key: string
+    name: string
+    type: string
+    site: string
+}
+
+export interface WatchProvider {
+    provider_id: number
+    provider_name: string
+    logo_path: string
+}
