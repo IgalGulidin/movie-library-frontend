@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { API_URL } from "@/lib/api";
 import type { Movie, TMDBResponse } from "@/types/movie.types";
 
 interface MoviesState {
@@ -24,10 +25,10 @@ function useMovies() {
     const fetchMovies = async () => {
       try {
         const [popularRes, inTheatersRes, topRatedRes, recentlyReleasedRes] = await Promise.all([
-          fetch("http://localhost:3000/movies/popular"),
-          fetch("http://localhost:3000/movies/in-theaters"),
-          fetch("http://localhost:3000/movies/top-rated"),
-          fetch("http://localhost:3000/movies/recently-released"),
+          fetch(`${API_URL}/movies/popular`),
+          fetch(`${API_URL}/movies/in-theaters`),
+          fetch(`${API_URL}/movies/top-rated`),
+          fetch(`${API_URL}/movies/recently-released`),
         ]);
 
         const [popular, inTheaters, topRated, recentlyReleased] = await Promise.all([

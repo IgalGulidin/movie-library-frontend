@@ -1,5 +1,6 @@
 import { useState } from "react"
 import { useDebouncedCallback } from "use-debounce"
+import { API_URL } from "@/lib/api"
 import type { Movie } from "@/types/movie.types"
 
 function SearchBar() {
@@ -18,7 +19,7 @@ function SearchBar() {
     setLoading(true)
     try {
       const response = await fetch(
-        `http://localhost:3000/movies/search?q=${encodeURIComponent(value)}`
+        `${API_URL}/movies/search?q=${encodeURIComponent(value)}`
       )
       const data = await response.json()
       setResults(data.results.slice(0, 5))

@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import { API_URL } from "@/lib/api";
 import type {
   MovieDetailType,
   CastMember,
@@ -22,10 +23,10 @@ function MovieDetail() {
       try {
         const [movieRes, creditsRes, videosRes, providersRes] =
           await Promise.all([
-            fetch(`http://localhost:3000/movies/${id}`),
-            fetch(`http://localhost:3000/movies/${id}/credits`),
-            fetch(`http://localhost:3000/movies/${id}/videos`),
-            fetch(`http://localhost:3000/movies/${id}/providers`),
+            fetch(`${API_URL}/movies/${id}`),
+            fetch(`${API_URL}/movies/${id}/credits`),
+            fetch(`${API_URL}/movies/${id}/videos`),
+            fetch(`${API_URL}/movies/${id}/providers`),
           ]);
 
         const [movieData, creditsData, videosData, providersData] =
@@ -153,10 +154,10 @@ function MovieDetail() {
 
         {/* Overview */}
         <div className="mt-8">
-          <h2 className="text-x1 font-bold text-foreground mb-2 flex items-center justify-center">
+          <h2 className="text-x1 font-bold text-foreground mb-2 text-center">
             Overview
           </h2>
-          <p className="text-muted-foreground leading-relaxed">
+          <p className="text-muted-foreground leading-relaxed text-center">
             {movie.overview}
           </p>
         </div>
